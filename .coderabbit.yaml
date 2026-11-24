@@ -1,0 +1,20 @@
+language: en-US
+reviews:
+  profile: assertive
+  request_changes_workflow: true
+  high_level_summary: true
+  auto_review:
+    enabled: true
+    drafts: true
+  path_instructions:
+    - path: "**/*.py"
+      instructions: |
+        Enforce: parameterized SQL, no shell=True, no hard-coded secrets,
+        context managers for resources, explicit None and empty-input handling.
+  tools:
+    ruff:
+      enabled: true
+    gitleaks:
+      enabled: true
+chat:
+  auto_reply: true
