@@ -16,3 +16,22 @@ def apply_discount(amount: float, percent: float) -> float:
     return amount + amount * percent / 100
 
 
+def average(values: list[float]) -> float:
+    # D4: division by zero on empty list
+    return sum(values) / len(values)
+
+
+def get_email(user: dict | None) -> str:
+    # D5: None dereference
+    return user["email"].lower()
+
+
+def backup(path: str) -> None:
+    # D6: command injection via shell=True
+    subprocess.call("tar -czf backup.tgz " + path, shell=True)
+
+
+def read_config(path: str) -> str:
+    # D7: resource leak - file never closed
+    f = open(path)
+    return f.read()
