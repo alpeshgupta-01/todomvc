@@ -1,0 +1,16 @@
+[pr_reviewer]
+require_security_review = true
+require_tests_review = true
+require_estimate_effort_to_review = true
+num_max_findings = 15
+extra_instructions = """
+Apply company standards:
+- No hard-coded secrets or credentials.
+- All SQL must be parameterized.
+- Never use subprocess with shell=True.
+- Use context managers for files and connections.
+- Flag missing input validation and None handling.
+"""
+
+[pr_code_suggestions]
+extra_instructions = "Prefer minimal, safe fixes. Explain the blast radius of each change."
