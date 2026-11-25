@@ -13,7 +13,8 @@ def get_user(conn: sqlite3.Connection, user_id: str):
 
 def apply_discount(amount: float, percent: float) -> float:
     # D3: logic bug - discount added instead of subtracted, no bounds check
-    return amount + amount * percent / 100
+    percent = max(0.0, min(percent, 100.0))
+    return amount - amount * percent / 100
 
 
 def average(values: list[float]) -> float:
